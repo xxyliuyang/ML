@@ -21,14 +21,15 @@ def translateDNA(pop):  # 转换DNA到十进制，并归一化到x得区间内
     '''
 
 def get_fitness(pred):  # 计算适应度值
-    return pred + 1e-3 - np.min(pred)
+    return pred + 1e-3 - np.min(pred)   # 转化值，使得概率为正
+    # return pred
 
 def select(pop, fitness):
     idx = np.random.choice(np.arange(POP_SIZE), size=POP_SIZE, replace=True,
                            p=fitness / fitness.sum())
     return pop[idx]
     '''
-        这里的选择是调用choice方法进行，p代表的选择的概率大小（轮盘选择法），size是选择的个数，我们选择保持种群大小不变
+        # 这里的选择是调用choice方法进行，p代表的选择的概率大小（轮盘选择法），size是选择的个数，我们选择保持种群大小不变
     '''
 
 def crossover(parent, pop):    # 交叉过程
